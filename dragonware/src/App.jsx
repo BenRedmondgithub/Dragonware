@@ -8,9 +8,9 @@ function App() {
     <main style={{ padding: '1rem 0' }}>
       <h1>Dragonware</h1>
       <p>Welcome to Dragonware, your ultimate software solution!</p>
-      <button>Get Started</button>
-      <button>Learn More</button>
-      <button>About Us</button>
+    <div class="rounded-lg bg-zinc-800 p-4 shadow">
+      <h2 class="text-xl font-semibold text-white">Character Sheet</h2>
+    </div>
     </main>
   )
 }
