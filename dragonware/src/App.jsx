@@ -10,9 +10,9 @@ function App() {
       <h1>Dragonware</h1>
       <p>Welcome to Dragonware, your ultimate software solution!</p>
       <main className="min-h-screen bg-zinc-950 flex gap-8 items-center justify-center">
-        <Card title="Character"/>
-        <Card title="Dice" />
-        <Card title="Map" />
+        <Card title="Character Sheet"/>
+        <Card title="Dice Roller" />
+        <Card title="Map Builder" />
       </main>
     </div>
   )
