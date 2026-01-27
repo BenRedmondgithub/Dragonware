@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+.body {
+  font-family: system-ui, sans-serif;
+  background-color: #121212;
+  color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -35,6 +43,7 @@
 
 .card {
   padding: 2em;
+  border-radius: 1em;
 }
 
 .read-the-docs {
