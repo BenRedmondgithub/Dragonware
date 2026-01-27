@@ -7,6 +7,9 @@ function Card({ title }) {
       bg-zinc-900
       shadow-lg
       flex items-center justify-center
+      hover:bg-zinc-800
+      hover:scale-105
+      transition-all
     ">
       <span className="text-zinc-200 text-xl font-semibold">
         {title}
