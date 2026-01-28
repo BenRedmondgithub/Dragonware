@@ -1,4 +1,4 @@
-function Card({ title }) {
+function Card({ title, description }) {
   return (
     <div className="
       w-64 h-96
@@ -6,7 +6,10 @@ function Card({ title }) {
       border border-zinc-600
       bg-zinc-900
       shadow-lg
-      flex items-center justify-center
+      flex flex-col items-center justify-center
+      gap-3
+      px-6
+      text-center
       hover:bg-zinc-800
       hover:scale-105
       transition-all
@@ -14,6 +17,9 @@ function Card({ title }) {
       <span className="text-zinc-200 text-xl font-semibold">
         {title}
       </span>
+      <p className="text-zinc-400 text-sm leading-relaxed">
+        {description}
+      </p>
     </div>
   )
 }

@@ -12,9 +12,18 @@ function App() {
       <p>Your digital bag of holding. Characters, maps, and dice at your fingertips.</p>
       </div>  
       <main className="min-h-screen bg-zinc-950 flex gap-8 items-center justify-center">
-        <Card title="Character Sheet"/>
-        <Card title="Dice Roller"/>
-        <Card title="Map Builder"/>
+        <Card
+          title="Character Sheet"
+          description="Create, edit, and track your heroes with notes, stats, and gear."
+        />
+        <Card
+          title="Dice Roller"
+          description="Roll any dice combo with quick presets for your favorite checks."
+        />
+        <Card
+          title="Map Builder"
+          description="Sketch encounter grids and plan terrain for every session."
+        />
       </main>
     </div>
   )
