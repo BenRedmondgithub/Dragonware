@@ -9,7 +9,7 @@ function App() {
     <div>
       <div>
       <h1>Dragonware</h1>
-      <p>Welcome to Dragonware, your ultimate software solution!</p>
+      <p>Your digital bag of holding. Characters, maps, and dice at your fingertips.</p>
       </div>  
       <main className="min-h-screen bg-zinc-950 flex gap-8 items-center justify-center">
         <Card title="Character Sheet"/>
