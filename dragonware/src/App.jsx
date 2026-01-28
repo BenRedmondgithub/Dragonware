@@ -13,8 +13,8 @@ function App() {
       </div>  
       <main className="min-h-screen bg-zinc-950 flex gap-8 items-center justify-center">
         <Card title="Character Sheet"/>
-        <Card title="Dice Roller" />
-        <Card title="Map Builder" />
+        <Card title="Dice Roller"/>
+        <Card title="Map Builder"/>
       </main>
     </div>
   )

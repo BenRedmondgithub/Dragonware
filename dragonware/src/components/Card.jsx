@@ -13,6 +13,7 @@ function Card({ title }) {
     ">
       <span className="text-zinc-200 text-xl font-semibold">
         {title}
+        {contact}
       </span>
     </div>
   )
