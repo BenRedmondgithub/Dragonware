@@ -1,6 +1,9 @@
-function Card({ title, description }) {
+import { Link } from "react-router-dom"
+
+function Card({ title, description, to }) {
   return (
-    <div
+    <Link
+      to={to}
       className="
         relative overflow-hidden
         w-64 h-96
@@ -27,8 +30,9 @@ function Card({ title, description }) {
       </span>
       <p className="relative z-10 text-zinc-400 text-sm leading-relaxed">
         {description}
+        
       </p>
-    </div>
+    </Link>
   )
 }
 
