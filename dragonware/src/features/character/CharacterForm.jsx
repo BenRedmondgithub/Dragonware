@@ -5,6 +5,8 @@ export default function CharacterForm() {
         name: '',
         classType: '',
         level: '',
+        species: '',
+        notes: ''
     });
 
 
@@ -17,22 +19,52 @@ function handleSubmit(e) {
 return (
    <form className="flex flex-col gap-4 mt-4">
     <div>
-        <label>Name</label>
+        <label className="block mb-1 font-semibold">Name</label>
         <input
             type="text"
+            name="name"
+            value={character.name}
+            placeholder="Bob The Ninja"
+        />
+    </div>
+
+    <div>
+        <label className="block mb-1 font-semibold">Species</label>
+        <input
+            type="text"
+            name="species"
+            value={character.species}   
+            placeholder="Human, Elf, Dwarf..."
+        />
+    </div>
+    
+    <div>
+        <label className="block mb-1 font-semibold">Class</label>
+        <input
+            type="text"
+            name="Role/Archtype"
+            value={character.classType}
+            placeholder="Barbarian, Wizard, Rogue..."
         />
     </div>
     <div>
-        <label>Class</label>
+        <label className="block mb-1 font-semibold">Level</label>
         <input
             type="text"
+            name="level"
+            value={character.level}
+            placeholder="1-20"
         />
     </div>
+
     <div>
-        <label>Level</label>
-        <input
-            type="text"
-        />
+    <label className="block mb-1 font-semibold">Notes</label>
+    <textarea
+        name="notes"
+        value={character.notes}
+        onChange={handleSubmit}
+        placeholder="Backstory, personality, and other details..."
+    />
     </div>
 
     <div>
@@ -42,6 +74,5 @@ return (
     </div>
 
    </form>
-
 )
 }
