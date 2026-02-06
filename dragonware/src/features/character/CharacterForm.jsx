@@ -22,7 +22,6 @@ export default function CharacterForm() {
     return (
    <form className="flex flex-col gap-4 mt-4" onSubmit={handleSubmit}>
     <div>
-        <h1>Character Creation</h1>
         <label className="block mb-1 font-semibold">Name</label>
         <input
             type="text"
