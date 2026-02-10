@@ -1,26 +1,29 @@
 import Card  from "../components/Card";
 
 export default function Home() {
-    return <div>
-        <h1>Dragonware</h1>
-        <p>Your digital bag of holding. Characters, maps, and dice at your fingertips.</p>
+    return (
+        <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col items-center justify-center p-5">
+            <h1 className="text text-5xl font-bold mb-4">Dragonware</h1>
+                <p className="text-zinc-400 mb-12 text-center max-w-lg">Your digital bag of holding. Characters, maps, and dice at your fingertips.</p>
+    
 
-        <main className="min-h-screen bg-zinc-950 flex gap-8 items-center justify-center">
-        <Card
-          title="Character Sheet"
-          description="Create, edit, and track your heroes with notes, stats, and gear."
-          to ="/character"
-        />
-        <Card
-            title="Dice Roller"
-            description="Roll any dice combo with quick presets for your favorite checks."
-            to ="/dice"
-        />
-        <Card
-            title="Map Builder"
-            description="Sketch encounter grids and plan terrain for every session."
-            to ="/map"
-        />
-      </main>
-    </div>;
+                <main className="flex gap-10 items-center justify-center">
+                    <Card
+                        title="Character Sheet"
+                        description="Create, edit, and track your heroes with notes, stats, and gear."
+                        to="/character"
+                    />
+                    <Card
+                        title="Dice Roller"
+                        description="Roll any dice combo with quick presets for your favorite checks."
+                        to="/dice"
+                    />
+                    <Card
+                        title="Map Builder"
+                        description="Sketch encounter grids and plan terrain for every session."
+                        to="/map"
+                    />
+                </main>
+        </div>
+    );
 }
