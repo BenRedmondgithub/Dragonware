@@ -4,9 +4,12 @@ import DicePage from "./features/dice/DicePage";
 import MapPage from "./features/map/MapPage";
 import CharacterPage from "./features/character/CharacterPage";
 import CharacterCreate from "./features/character/characterCreate";
+import NavBar from "./components/Navbar";
 
 function App() {
   return (
+    <>
+    <NavBar />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/dice" element={<DicePage />} />
@@ -14,6 +17,7 @@ function App() {
       <Route path="/character" element={<CharacterPage />} />
       <Route path="/character/characterCreate" element={<CharacterCreate />} />
     </Routes>
+    </>
   );
 }
 
