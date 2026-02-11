@@ -1,4 +1,15 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+
+function makeGrid(size) {
+    const sizeValue = typeof size === "string" ? size : "10x10";
+    const [width, height] = sizeValue.split("x").map((value) => Number(value));
+    const safeWidth = Number.isFinite(width) && width > 0 ? width : 10;
+    const safeHeight = Number.isFinite(height) && height > 0 ? height : 10;
+
+    return Array.from({ length: safeHeight }, () =>
+        Array.from({ length: safeWidth }, () => "empty")
+    );
+}
 
 export default function MapBuilder() {
     const [mapName, setMapName] = useState("");
@@ -6,7 +17,11 @@ export default function MapBuilder() {
     const [gridSize, setGridSize] = useState("10x10");
     const [theme, setTheme] = useState("dungeon");
 
-    const [grid, setGrid] = useState(null);
+    const [grid, setGrid] = useState(() => makeGrid(gridSize));
+
+    useEffect(() => {
+        setGrid(makeGrid(gridSize));
+    }, [gridSize]);
     
     function handleSubmit(e) {
         e.preventDefault();
@@ -93,18 +108,15 @@ export default function MapBuilder() {
 
                 {grid && (
                 <div className="mt-8">
-                    <h3 className="text-lg font-semibold mb-4">{mapName || "Your Map"}</h3>
-                    <div className="inline-block border-2 border-gray-400 p-2 bg-white">
-                        {grid.map((row, rowIndex) => (
-                            <div key={rowIndex} className="flex">
-                                {row.map((cell, colIndex) => (
+                    <h2 className="text-xl font-bold mb-4">Map Grid</h2>
+                    <div className="inline-block border border-gray-300">
+                        {grid.map((row, r) => (
+                            <div key={r} className="flex">
+                                {row.map((cell, c) => (
                                     <div
-                                        key={`${rowIndex}-${colIndex}`}
-                                        className={`${tileClass.base} ${
-                                            cell === 'empty' ? tileClass.empty : tileClass.filled
-                                        } cursor-pointer hover:opacity-75`}
-                                        onClick={() => toggleCell(rowIndex, colIndex)}
-                                        title={`Row ${rowIndex + 1}, Col ${colIndex + 1}`}
+                                        key={c}
+                                        className={`${tileClass.base} ${cell === 'empty' ? tileClass.empty : tileClass.filled} cursor-pointer`} 
+                                        onClick={() => toggleCell(r, c)}
                                     />
                                 ))}
                             </div>
