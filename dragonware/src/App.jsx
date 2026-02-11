@@ -5,6 +5,7 @@ import MapPage from "./features/map/MapPage";
 import CharacterPage from "./features/character/CharacterPage";
 import CharacterCreate from "./features/character/characterCreate";
 import NavBar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path="/character" element={<CharacterPage />} />
       <Route path="/character/characterCreate" element={<CharacterCreate />} />
     </Routes>
+    <Footer />
     </>
   );
 }
