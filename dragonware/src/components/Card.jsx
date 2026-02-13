@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import tarotCardImage from "../img/tarot-card.jpg"
 
 function Card({ title, description, to }) {
   return (
@@ -19,7 +20,7 @@ function Card({ title, description, to }) {
         hover:scale-105
         transition-all
       "
-      style={{ backgroundImage: "url('/img/tarot-card.jpg')" }}
+      style={{ backgroundImage: `url(${tarotCardImage})` }}
     >
       {/* Dark overlay */}
       <div className="absolute inset-0 bg-black/60" />
@@ -28,7 +29,7 @@ function Card({ title, description, to }) {
       <span className="relative z-10 text-zinc-200 text-xl font-semibold">
         {title}
       </span>
-      <p className="relative z-10 text-zinc-400 text-sm leading-relaxed">
+      <p className="relative z-10 text-zinc-300 drop-shadow-2xl text-sm leading-relaxed">
         {description}
         
       </p>

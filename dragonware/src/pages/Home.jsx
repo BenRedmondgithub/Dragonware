@@ -3,9 +3,9 @@ import NavBar from "../components/Navbar";
 
 export default function Home() {
     return (
-        <div className="min-h-screen bg-zinc-950 text-zinc-100 flex flex-col items-center justify-center p-5"> 
-            <h1 className="text-5xl font-bold mb-4">Dragonware</h1>
-                <p className="text-zinc-400 mb-12 text-center max-w-lg">Your digital bag of holding. Characters, maps, and dice at your fingertips.</p>
+        <div className="min-h-screen bg-zinc-950 text-zinc-100 p-8"> 
+            <h1 className="text-5xl font-bold mb-4 text-center">Dragonware</h1>
+                <p className="text-zinc-400 text-center p-4">Your digital bag of holding. Characters, maps, and dice at your fingertips.</p>
     
 
                 <main className="flex gap-10 items-center justify-center">

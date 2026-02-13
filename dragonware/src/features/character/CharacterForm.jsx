@@ -42,7 +42,7 @@ export default function CharacterForm({ onSubmit }) {
     }
 
     return (
-   <form className="grid grid-cols-2 gap-4" onSubmit={handleSubmit}>
+   <form className="grid grid-cols-1" onSubmit={handleSubmit}>
     <div>
         <label className="block mb-1 font-semibold">Name</label>
         <input className="text-black"
@@ -55,13 +55,14 @@ export default function CharacterForm({ onSubmit }) {
     </div>
 
     <div>
-        <label className="grid grid-cols-3">Species</label>
+        <label className="block mb-1 font-semibold">Species</label>
         <select className="block mb-1 font-semibold w-full border border-gray-300 rounded px-3 py-2 text-black"
             name="species"
             value={character.species}   
             onChange={handleChange}
 
         >
+            <option value="">Select a species...</option>
             <option value="Human">Human</option>
             <option value="Elf">Elf</option>
             <option value="Dwarf">Dwarf</option>
@@ -72,7 +73,7 @@ export default function CharacterForm({ onSubmit }) {
     </div>
     
     <div>
-        <label className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 block mb-1 font-semibold">Class</label>
+        <label className="block mb-1 font-semibold">Class</label>
         <select 
             value={character.classType} 
             name="classType"
@@ -89,7 +90,7 @@ export default function CharacterForm({ onSubmit }) {
         </select>
     </div>
 
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    <div className="grid grid-cols-6 gap-4">
           {(["str", "dex", "con", "int", "wis", "cha"]).map((stat) => (
                         <div
               key={stat}
@@ -105,9 +106,9 @@ export default function CharacterForm({ onSubmit }) {
                                 onChange={(e) => handleStatChange(stat, Number(e.target.value))}
                                 className="w-full border border-gray-300 rounded px-3 py-2 text-black"
                             />
-                        </div>
-          ))}
         </div>
+        ))}
+    </div>
     
     <div>
         <label className="block mb-1 font-semibold ">Level</label>
