@@ -42,7 +42,7 @@ export default function CharacterForm({ onSubmit }) {
     }
 
     return (
-   <form className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" onSubmit={handleSubmit}>
+   <form className="grid grid-cols-2 gap-4" onSubmit={handleSubmit}>
     <div>
         <label className="block mb-1 font-semibold">Name</label>
         <input className="text-black"
@@ -55,7 +55,7 @@ export default function CharacterForm({ onSubmit }) {
     </div>
 
     <div>
-        <label className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 block mb-1 font-semibold">Species</label>
+        <label className="grid grid-cols-3">Species</label>
         <select className="block mb-1 font-semibold w-full border border-gray-300 rounded px-3 py-2 text-black"
             name="species"
             value={character.species}   
