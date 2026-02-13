@@ -61,7 +61,7 @@ export default function MapBuilder() {
         <div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-4">
                 <div>
-                    <label className="block mb-1 font-semibold">Map Name</label>
+                    <label className="block mb-1 font-semibold font-black text-xl">Map Name</label>
                     <input
                         type="text"
                         value={mapName}
@@ -70,7 +70,7 @@ export default function MapBuilder() {
                     />
                 </div>
                 <div>
-                    <label className="block mb-1 font-semibold">Description</label>
+                    <label className="block mb-1 font-semibold font-black text-xl">Description</label>
                     <textarea
                         value={mapDescription}
                         onChange={(e) => setMapDescription(e.target.value)}
@@ -80,7 +80,7 @@ export default function MapBuilder() {
                 </div>
 
                 <div>
-                    <label className="block mb-1 font-semibold">Grid Size</label>
+                    <label className="block mb-1 font-semibold font-black text-xl">Grid Size</label>
                     <select
                         className="w-full border border-gray-300 rounded px-3 py-2"
                         value={gridSize}
@@ -93,8 +93,7 @@ export default function MapBuilder() {
                 </div>
 
                 <div>
-
-                    <label className="block mb-1 font-semibold">Theme</label>
+                    <label className="block mb-1 font-semibold font-black text-xl">Theme</label>
                     <select
                         className="w-full border border-gray-300 rounded px-3 py-2"
                         value={theme}
@@ -109,7 +108,7 @@ export default function MapBuilder() {
                 {grid && (
                 <div className="mt-8">
                     <h2 className="text-xl font-bold mb-4">Map Grid</h2>
-                    <div className="inline-block border border-gray-300">
+                    <div className="inline-block border border-gray-300 p-1 bg-gray-100 rounded-lg">
                         {grid.map((row, r) => (
                             <div key={r} className="flex">
                                 {row.map((cell, c) => (

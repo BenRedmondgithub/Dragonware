@@ -17,7 +17,7 @@ export default function DiceRoller() {
                 setMessage("")
     }
     return (
-        <div className="flex flex-col items-center gap-4 mt-4">
+        <div className="grid grid-cols-5 gap-4 flex flex-col items-center gap-4 mt-4 p-3">
             <button onClick={() => rollDice(4)}>Roll D4</button>
             <button onClick={() => rollDice(8)}>Roll D8</button>
             <button onClick={() => rollDice(6)}>Roll D6</button>
