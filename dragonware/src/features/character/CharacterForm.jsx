@@ -1,12 +1,20 @@
 import { useState } from "react";
 
-export default function CharacterForm() {
+export default function CharacterForm({ onSubmit }) {
     const [character, setCharacter] = useState({
         name: '',
         classType: '',
         level: '',
         species: '',
-        notes: ''
+        notes: '',
+        stats: {
+            str: 10,
+            dex: 10,
+            con: 10,
+            int: 10,
+            wis: 10,
+            cha: 10
+        }
     });
 
     function handleChange(e) {
@@ -14,16 +22,30 @@ export default function CharacterForm() {
         setCharacter((prev) => ({ ...prev, [name]: value }));
     }
 
+    function handleStatChange(stat, value) {
+        setCharacter((prev) => ({
+            ...prev,
+            stats: {
+                ...prev.stats,
+                [stat]: value
+            }
+        }));
+    }
+
     function handleSubmit(e) {
         e.preventDefault();
+        if (onSubmit) {
+            onSubmit(character);
+            return;
+        }
         console.log('Character created:', character);
     }
 
     return (
-   <form className="flex flex-col gap-4 mt-4" onSubmit={handleSubmit}>
+   <form className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" onSubmit={handleSubmit}>
     <div>
         <label className="block mb-1 font-semibold">Name</label>
-        <input
+        <input className="text-black"
             type="text"
             name="name"
             value={character.name}
@@ -33,23 +55,29 @@ export default function CharacterForm() {
     </div>
 
     <div>
-        <label className="block mb-1 font-semibold">Species</label>
-        <input
-            type="text"
+        <label className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 block mb-1 font-semibold">Species</label>
+        <select className="block mb-1 font-semibold w-full border border-gray-300 rounded px-3 py-2 text-black"
             name="species"
             value={character.species}   
             onChange={handleChange}
-            placeholder="Human, Elf, Dwarf..."
-        />
+
+        >
+            <option value="Human">Human</option>
+            <option value="Elf">Elf</option>
+            <option value="Dwarf">Dwarf</option>
+            <option value="Halfling">Halfling</option>
+            <option value="Orc">Orc</option>
+            <option value="Tiefling">Tiefling</option>
+        </select>
     </div>
     
     <div>
-        <label className="block mb-1 font-semibold">Class</label>
+        <label className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 block mb-1 font-semibold">Class</label>
         <select 
             value={character.classType} 
             name="classType"
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded px-3 py-2"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-black"
         >
             <option value="">Select a class...</option>
             <option value="Barbarian">Barbarian</option>
@@ -60,11 +88,33 @@ export default function CharacterForm() {
             <option value="Ranger">Ranger</option>
         </select>
     </div>
+
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {(["str", "dex", "con", "int", "wis", "cha"]).map((stat) => (
+                        <div
+              key={stat}
+                            className="flex flex-col gap-1"
+                        >
+                            <label className="font-semibold uppercase" htmlFor={`stat-${stat}`}>{stat}</label>
+                            <input
+                                id={`stat-${stat}`}
+                                type="number"
+                                min="1"
+                                max="30"
+                                value={character.stats[stat]}
+                                onChange={(e) => handleStatChange(stat, Number(e.target.value))}
+                                className="w-full border border-gray-300 rounded px-3 py-2 text-black"
+                            />
+                        </div>
+          ))}
+        </div>
     
     <div>
-        <label className="block mb-1 font-semibold">Level</label>
-        <input
-            type="text"
+        <label className="block mb-1 font-semibold ">Level</label>
+        <input className="text-black"
+            type="number"
+            min="1"
+            max="20"
             name="level"
             value={character.level}
             onChange={handleChange}
