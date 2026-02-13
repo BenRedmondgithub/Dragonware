@@ -61,8 +61,8 @@ export default function MapBuilder() {
         <div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4 mt-4">
                 <div>
-                    <label className="block mb-1 font-semibold font-black text-xl">Map Name</label>
-                    <input
+                    <label className="block mb-1 font-semibold text-xl">Map Name</label>
+                    <input className="text-black"
                         type="text"
                         value={mapName}
                         onChange={(e) => setMapName(e.target.value)}
@@ -70,8 +70,9 @@ export default function MapBuilder() {
                     />
                 </div>
                 <div>
-                    <label className="block mb-1 font-semibold font-black text-xl">Description</label>
+                    <label className="block mb-1 font-semibold text-xl">Description</label>
                     <textarea
+                        className="text-black"
                         value={mapDescription}
                         onChange={(e) => setMapDescription(e.target.value)}
                         placeholder="A dark and dangerous dungeon filled with traps and monsters."
@@ -80,12 +81,12 @@ export default function MapBuilder() {
                 </div>
 
                 <div>
-                    <label className="block mb-1 font-semibold font-black text-xl">Grid Size</label>
-                    <select
-                        className="w-full border border-gray-300 rounded px-3 py-2"
+                    <label className="block mb-1 font-semibold text-xl">Grid Size</label>
+                    <select className="w-full border border-gray-300 rounded px-3 py-2 text-black"
                         value={gridSize}
                         onChange={(e) => setGridSize(e.target.value)}
                     >
+                        <option value="">Select a grid size...</option>
                         <option value="10x10">10x10</option>
                         <option value="20x20">20x20</option>
                         <option value="30x30">30x30</option>
@@ -93,12 +94,13 @@ export default function MapBuilder() {
                 </div>
 
                 <div>
-                    <label className="block mb-1 font-semibold font-black text-xl">Theme</label>
+                    <label className="block mb-1 font-semibold text-xl">Theme</label>
                     <select
-                        className="w-full border border-gray-300 rounded px-3 py-2"
+                        className="w-full border border-gray-300 rounded px-3 py-2 text-black"
                         value={theme}
                         onChange={(e) => setTheme(e.target.value)}
                     >
+                        <option value="">Select a theme...</option>
                         <option value="dungeon">Dungeon</option>
                         <option value="forest">Forest</option>
                         <option value="castle">Castle</option>
@@ -107,7 +109,7 @@ export default function MapBuilder() {
 
                 {grid && (
                 <div className="mt-8">
-                    <h2 className="text-xl font-bold mb-4">Map Grid</h2>
+                    <h2 className="text-xl font-bold mb-4 text-black">Map Grid</h2>
                     <div className="inline-block border border-gray-300 p-1 bg-gray-100 rounded-lg">
                         {grid.map((row, r) => (
                             <div key={r} className="flex">
