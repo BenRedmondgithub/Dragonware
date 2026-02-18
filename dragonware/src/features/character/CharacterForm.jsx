@@ -43,6 +43,8 @@ export default function CharacterForm({ onSubmit }) {
 
     return (
    <form className="grid grid-cols-1" onSubmit={handleSubmit}>
+    <div className="text-2xl font-bold mb-4 text-white">Character Form</div>
+    <div className="grid grid-cols-3 gap-5">
     <div>
         <label className="block mb-1 font-semibold">Name</label>
         <input className="text-black"
@@ -88,6 +90,7 @@ export default function CharacterForm({ onSubmit }) {
             <option value="Fighter">Fighter</option>
             <option value="Ranger">Ranger</option>
         </select>
+    </div>
     </div>
 
     <div className="grid grid-cols-6 gap-4">
