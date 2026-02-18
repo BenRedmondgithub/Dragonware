@@ -114,10 +114,10 @@ export default function MapBuilder() {
 
                     <div className="col-span-2 text-sm text-gray-500 mt-1">
                         <label className="block mb-1 font-semibold text-xl"></label>
-                        <select name="" id="">
-                            <option value="">Dungeon Theme: Dark gray for empty, light gray for filled</option>
-                            <option value="">Forest Theme: Dark green for empty, light green for filled</option>
-                            <option value="">Castle Theme: Medium gray for empty, light gray for filled</option>
+                        <select className="w-full border border-gray-300 rounded px-3 py-2 text-black">
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
                         </select>
                     </div>
 
