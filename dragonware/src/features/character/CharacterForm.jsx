@@ -42,7 +42,7 @@ export default function CharacterForm({ onSubmit }) {
     }
 
     return (
-   <form className="grid grid-cols-1" onSubmit={handleSubmit}>
+   <form className="grid grid-cols-1 gap-4" onSubmit={handleSubmit}>
     <div className="text-2xl font-bold mb-4 text-white">Character Form</div>
     <div className="grid grid-cols-3 gap-5">
     <div>
