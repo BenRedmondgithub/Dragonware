@@ -55,6 +55,9 @@ export default function MapBuilder() {
             theme === "forest" ? "bg-green-300" : "bg-gray-300";
 
         return { base, empty, filled };
+
+
+
     }, [theme]);
 // Render the form and the grid
 // Then all the web stuff I know
@@ -110,19 +113,16 @@ export default function MapBuilder() {
                         <option value="forest">Forest</option>
                         <option value="castle">Castle</option>
                     </select>
-                    </div>
+                </div>
 
-                    <div className="col-span-2 text-sm text-gray-500 mt-1">
-                        <label className="block mb-1 font-semibold text-xl"></label>
-                        <select className="w-full border border-gray-300 rounded px-3 py-2 text-black">
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                        </select>
-                    </div>
+
+                
+                </div>
+
 
                 </div>
-                </div>
+
+
 
                 {grid && (
                 <div className="mt-8">
