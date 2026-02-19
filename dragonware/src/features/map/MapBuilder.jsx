@@ -54,7 +54,17 @@ export default function MapBuilder() {
             theme === "castle" ? "bg-gray-200" :
             theme === "forest" ? "bg-green-300" : "bg-gray-300";
 
-        return { base, empty, filled };
+        const themeClasses = {
+            player: "bg-blue-500",
+            NPC: "bg-yellow-500",
+            skeleton: "bg-gray-400",
+            monster: "bg-red-500",
+            treasure: "bg-yellow-300",
+            trap: "bg-purple-500",
+            boss: "bg-black"
+        };
+
+        return { base, empty, filled, ...themeClasses };
 
 
 
@@ -115,7 +125,23 @@ export default function MapBuilder() {
                     </select>
                 </div>
 
-
+                <div>
+                    <label className="block mb-1 font-semibold text-xl">Add-ins</label>
+                    <select
+                        className="w-full border border-gray-300 rounded px-3 py-2 text-black"
+                        value={themeClasses}
+                        onChange={(e) => setTheme(e.target.value)}
+                    >
+                        <option value="">Select a theme...</option>
+                        <option value="player">Player</option>
+                        <option value="NPC">NPC</option>
+                        <option value="skeleton">Skeleton</option>
+                        <option value="monster">Monster</option>
+                        <option value="treasure">Treasure</option>
+                        <option value="trap">Trap</option>
+                        <option value="boss">Boss</option>
+                    </select>
+                </div>  
                 
                 </div>
 
