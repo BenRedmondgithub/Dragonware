@@ -16,6 +16,7 @@ export default function MapBuilder() {
     const [mapDescription, setMapDescription] = useState("");
     const [gridSize, setGridSize] = useState("10x10");
     const [theme, setTheme] = useState("dungeon");
+    const [addIn, setAddIn] = useState("");
 // State to hold the grid data
     const [grid, setGrid] = useState(() => makeGrid(gridSize));
 
@@ -129,8 +130,8 @@ export default function MapBuilder() {
                     <label className="block mb-1 font-semibold text-xl">Add-ins</label>
                     <select
                         className="w-full border border-gray-300 rounded px-3 py-2 text-black"
-                        value={themeClasses}
-                        onChange={(e) => setTheme(e.target.value)}
+                        value={addIn}
+                        onChange={(e) => setAddIn(e.target.value)}
                     >
                         <option value="">Select a theme...</option>
                         <option value="player">Player</option>
