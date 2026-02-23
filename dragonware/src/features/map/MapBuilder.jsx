@@ -21,7 +21,19 @@ export default function MapBuilder({ initialValues, onSave, buttonLabel = "Creat
     const [grid, setGrid] = useState(() => initialValues?.grid ?? makeGrid(initialValues?.size ?? "10x10"));
 
     useEffect(() => {
-        setGrid(makeGrid(gridSize));
+        setGrid((prevGrid) => {
+            const [width, height] = gridSize.split("x").map((value) => Number(value));
+            const expectedWidth = Number.isFinite(width) && width > 0 ? width : 10;
+            const expectedHeight = Number.isFinite(height) && height > 0 ? height : 10;
+            const currentHeight = Array.isArray(prevGrid) ? prevGrid.length : 0;
+            const currentWidth = currentHeight > 0 && Array.isArray(prevGrid[0]) ? prevGrid[0].length : 0;
+
+            if (currentWidth === expectedWidth && currentHeight === expectedHeight) {
+                return prevGrid;
+            }
+
+            return makeGrid(gridSize);
+        });
     }, [gridSize]);
 // Handle form submission to create the map
     function handleSubmit(e) {
