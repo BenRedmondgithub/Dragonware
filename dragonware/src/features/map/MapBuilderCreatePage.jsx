@@ -4,26 +4,22 @@ import { addMap } from "../../lib/mapStore";
 
 export default function MapBuilderCreate() {
     const navigate = useNavigate();
-
-    function handleSave(mapData) {
+    const handleSubmit = (mapData) => {
         if (!mapData.name.trim()) {
             alert("Name cannot be empty");
             return;
         }
-
-        addMap({
+        const newMap = {
             ...mapData,
             createdAt: Date.now(),
-            updatedAt: Date.now(),
-        });
+            updatedAt: Date.now()
+        };
+        addMap(newMap);
+        navigate('/map');
+    };
 
-        navigate("/map-lists");
-    }
-
-    return (
-        <div>
-            <h1>Create New Map</h1>
-            <MapBuilder onSave={handleSave} buttonLabel="Create Map" />
-        </div>
-    )
-} 
+    return <div>
+        <h1>Create New Map</h1>
+        <MapBuilder onSave={handleSubmit} />
+    </div>;
+}

@@ -11,14 +11,14 @@ function makeGrid(size) {
     );
 }
 // Main component for building a map
-export default function MapBuilder() {
-    const [mapName, setMapName] = useState("");
-    const [mapDescription, setMapDescription] = useState("");
-    const [gridSize, setGridSize] = useState("10x10");
-    const [theme, setTheme] = useState("dungeon");
+export default function MapBuilder({ initialValues, onSave, buttonLabel = "Create Map" }) {
+    const [mapName, setMapName] = useState(initialValues?.name ?? "");
+    const [mapDescription, setMapDescription] = useState(initialValues?.description ?? "");
+    const [gridSize, setGridSize] = useState(initialValues?.size ?? "10x10");
+    const [theme, setTheme] = useState(initialValues?.theme ?? "dungeon");
     const [addIn, setAddIn] = useState("");
 // State to hold the grid data
-    const [grid, setGrid] = useState(() => makeGrid(gridSize));
+    const [grid, setGrid] = useState(() => initialValues?.grid ?? makeGrid(initialValues?.size ?? "10x10"));
 
     useEffect(() => {
         setGrid(makeGrid(gridSize));
@@ -27,12 +27,20 @@ export default function MapBuilder() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        // Create a basic grid structure
-        const [width, height] = gridSize.split('x').map(Number);
-        const newGrid = Array(height).fill(null).map(() => Array(width).fill('empty'));
-        setGrid(newGrid);
+        const mapData = {
+            name: mapName,
+            description: mapDescription,
+            size: gridSize,
+            theme,
+            grid,
+        };
 
-        console.log(mapName, mapDescription, gridSize, theme);
+        if (onSave) {
+            onSave(mapData);
+            return;
+        }
+
+        console.log(mapData);
     }
 
 // Toggle the state of a cell between 'empty' and 'filled'
@@ -49,12 +57,12 @@ export default function MapBuilder() {
         const empty = 
             theme === "dungeon" ? "bg-gray-700" :
             theme === "castle" ? "bg-gray-500" :
-            theme === "forest" ? "bg-green-700" : "bg-gray-700";
+            theme === "forest" ? "bg-green-700" :
             theme === "cave" ? "bg-gray-600" : "bg-gray-700";
         const filled = 
             theme === "dungeon" ? "bg-gray-300" :
             theme === "castle" ? "bg-gray-200" :
-            theme === "forest" ? "bg-green-300" : "bg-gray-300";
+            theme === "forest" ? "bg-green-300" :
             theme === "cave" ? "bg-gray-400" : "bg-gray-300";
 
         // Define add-in classes for different elements that can be added to the map
@@ -181,7 +189,7 @@ export default function MapBuilder() {
                     </div>
                 </div>
                 )}
-                <button>Create Map</button>
+                <button>{buttonLabel}</button>
             </form>
         </div>
     );
