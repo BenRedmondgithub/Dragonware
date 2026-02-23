@@ -39,7 +39,7 @@ export default function MapBuilder() {
     function toggleCell(r, c) {
         setGrid((prev) => {
             const next = prev.map((row) => row.slice());
-            next[r][c] = next[r][c] === 'empty' ? 'filled' : 'empty';
+            next[r][c] = next[r][c] === 'empty' ? (addIn || 'filled') : 'empty';
             return next;
         });
     }
@@ -50,26 +50,31 @@ export default function MapBuilder() {
             theme === "dungeon" ? "bg-gray-700" :
             theme === "castle" ? "bg-gray-500" :
             theme === "forest" ? "bg-green-700" : "bg-gray-700";
+            theme === "cave" ? "bg-gray-600" : "bg-gray-700";
         const filled = 
             theme === "dungeon" ? "bg-gray-300" :
             theme === "castle" ? "bg-gray-200" :
             theme === "forest" ? "bg-green-300" : "bg-gray-300";
+            theme === "cave" ? "bg-gray-400" : "bg-gray-300";
 
-        const themeClasses = {
-            player: "bg-blue-500",
-            NPC: "bg-yellow-500",
-            skeleton: "bg-gray-400",
-            monster: "bg-red-500",
-            treasure: "bg-yellow-300",
-            trap: "bg-purple-500",
-            boss: "bg-black"
-        };
+        // Define add-in classes for different elements that can be added to the map
+        const addInClass = {
+            floor : {label: "Floor", render: () => ""},
+            player: {label: "Player", render: () => "🟢"},
+            npc: {label: "NPC", render: () => "👤"},
+            skeleton: {label: "Skeleton", render: () => "💀"},
+            monster: {label: "Monster", render: () => "👹"},
+            treasure: {label: "Treasure", render: () => "💎"},
+            undead: {label: "Undead", render: () => "🧟"},
+            trap: {label: "Trap", render: () => "🪤"},
+            dragon: {label: "Dragon", render: () => "🐉"},
+            boss: {label: "Boss", render: () => "😈"}
+        }
 
-        return { base, empty, filled, ...themeClasses };
 
+        return { base, empty, filled, addInClass };
 
-
-    }, [theme]);
+    }, [theme, addIn]);
 // Render the form and the grid
 // Then all the web stuff I know
     return (
@@ -100,12 +105,13 @@ export default function MapBuilder() {
 
                 <div>
                     <label className="block mb-1 font-semibold text-xl">Grid Size</label>
-                    <div className="grid grid-cols-2 gap-5">
+                    <div className="grid grid-cols-3 gap-5">
                     <select className="w-full border border-gray-300 rounded px-3 py-2 text-black"
                         value={gridSize}
                         onChange={(e) => setGridSize(e.target.value)}
+                        placeholder="Select a grid size..."
                     >
-                        <option value="">Select a grid size...</option>
+                        <option value="5x5">5x5</option>
                         <option value="10x10">10x10</option>
                         <option value="20x20">20x20</option>
                         <option value="30x30">30x30</option>
@@ -118,11 +124,12 @@ export default function MapBuilder() {
                         className="w-full border border-gray-300 rounded px-3 py-2 text-black"
                         value={theme}
                         onChange={(e) => setTheme(e.target.value)}
+                        placeholder="Select a theme..."
                     >
-                        <option value="">Select a theme...</option>
                         <option value="dungeon">Dungeon</option>
                         <option value="forest">Forest</option>
                         <option value="castle">Castle</option>
+                        <option value="cave">Cave</option>
                     </select>
                 </div>
 
@@ -132,15 +139,18 @@ export default function MapBuilder() {
                         className="w-full border border-gray-300 rounded px-3 py-2 text-black"
                         value={addIn}
                         onChange={(e) => setAddIn(e.target.value)}
+                        placeholder="Select an element to add..."
                     >
-                        <option value="">Select a theme...</option>
+                        <option value="floor">Floor</option>
                         <option value="player">Player</option>
-                        <option value="NPC">NPC</option>
+                        <option value="npc">NPC</option>
                         <option value="skeleton">Skeleton</option>
                         <option value="monster">Monster</option>
                         <option value="treasure">Treasure</option>
+                        <option value="undead">Undead</option>
                         <option value="trap">Trap</option>
                         <option value="boss">Boss</option>
+                        <option value="dragon">Dragon</option>
                     </select>
                 </div>  
                 
@@ -162,7 +172,9 @@ export default function MapBuilder() {
                                         key={c}
                                         className={`${tileClass.base} ${cell === 'empty' ? tileClass.empty : tileClass.filled} cursor-pointer`} 
                                         onClick={() => toggleCell(r, c)}
-                                    />
+                                    >
+                                        {cell !== 'empty' && cell !== 'filled' ? tileClass.addInClass[cell]?.render() : null}
+                                    </div>
                                 ))}
                             </div>
                         ))}
