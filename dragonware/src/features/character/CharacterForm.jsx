@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export default function CharacterForm({ onSubmit }) {
-    const [character, setCharacter] = useState({
+export default function CharacterForm({ initialValues, onSave, onbutton = "Save" }) {
+    const [character, setCharacter] = useState(initialValues ?? {
         name: '',
         classType: '',
         level: '',
@@ -34,8 +34,8 @@ export default function CharacterForm({ onSubmit }) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (onSubmit) {
-            onSubmit(character);
+        if (onSave) {
+            onSave(character);
             return;
         }
         console.log('Character created:', character);
@@ -139,8 +139,7 @@ export default function CharacterForm({ onSubmit }) {
     </div>
 
     <div>
-        <button type="submit" className="bg-teal-400 text-white px-4 py-2 rounded">
-            Create Character
+        <button type="submit" className="bg-teal-400 text-white px-4 py-2 rounded">{onbutton}
         </button>
     </div>
 

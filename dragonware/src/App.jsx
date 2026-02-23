@@ -4,7 +4,9 @@ import DicePage from "./features/dice/DicePage";
 import MapPage from "./features/map/MapPage";
 import MapBuilderCreate from "./features/map/MapBuilderCreate";
 import CharacterPage from "./features/character/CharacterPage";
-import CharacterCreate from "./features/character/characterCreate";
+import CharacterCreatePage from "./features/character/CharacterCreatePage";
+import CharacterEditPage from "./features/character/CharacterEditPage";
+import CharacterListPage from "./features/character/characterListPage";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -16,9 +18,11 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/dice" element={<DicePage />} />
       <Route path="/map" element={<MapPage />} />
+      <Route path="/character/characterList" element={<CharacterListPage />} />
+      <Route path="/character/characterCreate" element={<CharacterCreatePage />} />
+      <Route path="/character/:id" element={<CharacterEditPage />} />
       <Route path="/map-builder-create" element={<MapBuilderCreate />} />
       <Route path="/character" element={<CharacterPage />} />
-      <Route path="/character/characterCreate" element={<CharacterCreate />} />
     </Routes>
     <Footer />
     </>

@@ -1,26 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import CharacterForm from "./CharacterForm";
+import { addCharacter } from "../../lib/characterStore";
 
-const KEY = "dragonware.characters";
-
-function load (){
-    const data = localStorage.getItem(KEY);
-    if (!data) {
-        return [];
-    }
-
-    try {
-        return JSON.parse(data);
-    } catch {
-        return [];
-    }
-}
-
-function save (list) {
-    localStorage.setItem(KEY, JSON.stringify(list));
-}
-
-export default function CharacterCreate() {
+export default function CharacterCreatePage() {
     const navigate = useNavigate();
 
     const handleSubmit = (character) => {
@@ -42,19 +24,18 @@ export default function CharacterCreate() {
         }
 
         const newChar = {
-            id: crypto.randomUUID(),
             ...character,
             level: levelValue,
             createdAt: Date.now(),
             updatedAt: Date.now()
         };
 
-        const existing = load();
-        save([...existing, newChar]);
-        navigate('/character');
+        addCharacter(newChar);
+        navigate('/character/characterList');
     };
 
     return <div>
         <h1>Create New Character</h1>
-        <CharacterForm onSubmit={handleSubmit} /> </div>
+        <CharacterForm onSave={handleSubmit} /> 
+        </div>
 }
