@@ -104,7 +104,7 @@ export default function MapBuilder({ initialValues, onSave, buttonLabel = "Creat
                 <div className="grid grid-cols-2 gap-5">
                 <div>
                     <label className="block mb-1 font-semibold text-xl">Map Name</label>
-                    <input className="text-black"
+                    <input className="text-white bg-gray-800 w-full border border-gray-300 rounded px-3 py-2"
                         type="text"
                         value={mapName}
                         onChange={(e) => setMapName(e.target.value)}
@@ -114,7 +114,7 @@ export default function MapBuilder({ initialValues, onSave, buttonLabel = "Creat
                 <div>
                     <label className="block mb-1 font-semibold text-xl">Description</label>
                     <textarea
-                        className="text-black"
+                        className="text-white bg-gray-800 w-full border border-gray-300 rounded px-3 py-2"
                         value={mapDescription}
                         onChange={(e) => setMapDescription(e.target.value)}
                         placeholder="A dark and dangerous dungeon filled with traps and monsters."
@@ -126,7 +126,7 @@ export default function MapBuilder({ initialValues, onSave, buttonLabel = "Creat
                 <div>
                     <label className="block mb-1 font-semibold text-xl">Grid Size</label>
                     <div className="grid grid-cols-3 gap-5">
-                    <select className="w-full border border-gray-300 rounded px-3 py-2 text-black"
+                    <select className="w-full border border-gray-300 rounded px-3 py-2 text-white bg-gray-800   "
                         value={gridSize}
                         onChange={(e) => setGridSize(e.target.value)}
                         placeholder="Select a grid size..."
@@ -141,7 +141,7 @@ export default function MapBuilder({ initialValues, onSave, buttonLabel = "Creat
                 <div>
                     <label className="block mb-1 font-semibold text-xl">Theme</label>
                     <select
-                        className="w-full border border-gray-300 rounded px-3 py-2 text-black"
+                        className="w-full border border-gray-300 rounded px-3 py-2 text-white bg-gray-800"
                         value={theme}
                         onChange={(e) => setTheme(e.target.value)}
                         placeholder="Select a theme..."
@@ -156,7 +156,7 @@ export default function MapBuilder({ initialValues, onSave, buttonLabel = "Creat
                 <div>
                     <label className="block mb-1 font-semibold text-xl">Add-ins</label>
                     <select
-                        className="w-full border border-gray-300 rounded px-3 py-2 text-black"
+                        className="w-full border border-gray-300 rounded px-3 py-2 text-white bg-gray-800"
                         value={addIn}
                         onChange={(e) => setAddIn(e.target.value)}
                         placeholder="Select an element to add..."

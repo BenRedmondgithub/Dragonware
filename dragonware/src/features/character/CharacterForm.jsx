@@ -47,7 +47,7 @@ export default function CharacterForm({ initialValues, onSave, onbutton = "Save"
     <div className="grid grid-cols-3 gap-5">
     <div>
         <label className="block mb-1 font-semibold">Name</label>
-        <input className="text-black"
+        <input className="text-white"
             type="text"
             name="name"
             value={character.name}
@@ -58,7 +58,7 @@ export default function CharacterForm({ initialValues, onSave, onbutton = "Save"
 
     <div>
         <label className="block mb-1 font-semibold">Species</label>
-        <select className="block mb-1 font-semibold w-full border border-gray-300 rounded px-3 py-2 text-black"
+        <select className="block mb-1 font-semibold w-full border border-gray-300 rounded px-3 py-2 text-white bg-gray-800"
             name="species"
             value={character.species}   
             onChange={handleChange}
@@ -80,7 +80,7 @@ export default function CharacterForm({ initialValues, onSave, onbutton = "Save"
             value={character.classType} 
             name="classType"
             onChange={handleChange}
-            className="w-full border border-gray-300 rounded px-3 py-2 text-black"
+            className="w-full border border-gray-300 rounded px-3 py-2 text-white bg-gray-800   "
         >
             <option value="">Select a class...</option>
             <option value="Barbarian">Barbarian</option>
@@ -93,7 +93,7 @@ export default function CharacterForm({ initialValues, onSave, onbutton = "Save"
     </div>
     </div>
 
-    <div className="grid grid-cols-6 gap-4">
+    <div className="grid grid-cols-6 gap-4 text-white">
           {(["str", "dex", "con", "int", "wis", "cha"]).map((stat) => (
                         <div
               key={stat}
@@ -107,7 +107,7 @@ export default function CharacterForm({ initialValues, onSave, onbutton = "Save"
                                 max="30"
                                 value={character.stats[stat]}
                                 onChange={(e) => handleStatChange(stat, Number(e.target.value))}
-                                className="w-full border border-gray-300 rounded px-3 py-2 text-black"
+                                className="w-full border border-gray-300 rounded px-3 py-2 text-white bg-gray-800"
                             />
         </div>
         ))}
@@ -115,7 +115,7 @@ export default function CharacterForm({ initialValues, onSave, onbutton = "Save"
     
     <div>
         <label className="block mb-1 font-semibold ">Level</label>
-        <input className="text-black"
+        <input className="text-white bg-gray-800 w-full border border-gray-300 rounded px-3 py-2"
             type="number"
             min="1"
             max="20"
@@ -133,7 +133,7 @@ export default function CharacterForm({ initialValues, onSave, onbutton = "Save"
             value={character.notes}
             onChange={handleChange}
             placeholder="Backstory, personality, and other details..."
-            className="w-full rounded border border-gray-300 bg-gray-50 p-3 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500"
+            className="w-full rounded border border-gray-300 bg-gray-800 p-3 text-sm text-white focus:border-blue-500 focus:ring-blue-500"
             rows="4"
         />
     </div>
