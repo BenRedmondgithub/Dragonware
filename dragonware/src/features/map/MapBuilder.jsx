@@ -94,7 +94,7 @@ export default function MapBuilder({ initialValues, onSave, buttonLabel = "Creat
 
         return { base, empty, filled, addInClass };
 
-    }, [theme, addIn]);
+    }, [theme]);
 // Render the form and the grid
 // Then all the web stuff I know
     return (

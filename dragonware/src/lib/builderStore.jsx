@@ -20,9 +20,9 @@ export function saveBuilder(builder) {
         localStorage.setItem(KEY, JSON.stringify(builder));
     } catch (e) {
         console.error("Failed to save builder data:", e);
-    } finally {
-        return builder;
     }
+
+    return builder;
 }
 
 export function addBuilder(builder) {

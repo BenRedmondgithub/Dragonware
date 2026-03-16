@@ -20,9 +20,9 @@ export function saveMap(maps) {
         localStorage.setItem(KEY, JSON.stringify(maps));
     } catch (e) {
         console.error("Failed to save map data:", e);
-    } finally {
-        return maps;
     }
+
+    return maps;
 }
 
 export function addMap(map) {

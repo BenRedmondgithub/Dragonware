@@ -20,9 +20,9 @@ export function saveCharacter(character) {
         localStorage.setItem(KEY, JSON.stringify(character));
     } catch (e) {
         console.error("Failed to save character data:", e);
-    } finally {
-        return character;
     }
+
+    return character;
 }
 
 export function addCharacter(character) {

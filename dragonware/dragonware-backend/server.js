@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const characterRoutes = require('./routes/character');
 
 const app = express();
 
@@ -35,37 +36,7 @@ app.get("/api/roll-dice", (req, res) => {
     res.json({ results });
 });
 
-app.get("/api/characters", (req, res) => {
-    const db = require('./database');
-    db.all('SELECT * FROM characters', [], (err, rows) => {
-        if (err) {
-            console.error('Error fetching characters:', err.message);
-            return res.status(500).json({ error: 'Failed to fetch characters' });
-        }
-        res.json(rows);
-    });
-});
-
-app.post("/api/characters", (req, res) => {
-    const db = require('./database');
-    const { name, class: characterClass, level } = req.body;
-    
-    if (!name || !characterClass || !level) {
-        return res.status(400).json({ error: 'Name, class, and level are required' });
-    }
-
-    db.run(
-        'INSERT INTO characters (name, class, level) VALUES (?, ?, ?)',
-        [name, characterClass, level],
-        function (err) {
-            if (err) {
-                console.error('Error inserting character:', err.message);
-                return res.status(500).json({ error: 'Failed to create character' });
-            }
-            res.status(201).json({ id: this.lastID, name, class: characterClass, level });
-        }
-    );
-});
+app.use('/api', characterRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
