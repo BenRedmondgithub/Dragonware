@@ -9,6 +9,7 @@ db.run(
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
         class TEXT NOT NULL,
+        species TEXT NOT NULL,
         level INTEGER NOT NULL
     )`,
     (err) => {
@@ -19,10 +20,10 @@ db.run(
 );
 
 router.post('/characters', (req, res) => {
-    const { name, class: characterClass, level } = req.body;
+    const { name, class: characterClass, species, level } = req.body;
 
-    if (!name || !characterClass || !level) {
-        return res.status(400).json({ error: 'Name, class, and level are required' });
+    if (!name || !characterClass || !species || !level) {
+        return res.status(400).json({ error: 'Name, class, species, and level are required' });
     }
 
     db.run(
