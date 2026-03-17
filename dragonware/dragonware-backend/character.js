@@ -1,23 +1,7 @@
 const express = require('express');
-const db = require('../database');
+const db = require('./database');
 
 const router = express.Router();
-
-// Ensure table exists before handling character routes.
-db.run(
-    `CREATE TABLE IF NOT EXISTS characters (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        class TEXT NOT NULL,
-        species TEXT NOT NULL,
-        level INTEGER NOT NULL
-    )`,
-    (err) => {
-        if (err) {
-            console.error('Error ensuring characters table exists:', err.message);
-        }
-    }
-);
 
 router.post('/characters', (req, res) => {
     const { name, class: characterClass, species, level } = req.body;
@@ -27,15 +11,15 @@ router.post('/characters', (req, res) => {
     }
 
     db.run(
-        'INSERT INTO characters (name, class, level) VALUES (?, ?, ?)',
-        [name, characterClass, level],
+        'INSERT INTO characters (name, class, species, level) VALUES (?, ?, ?, ?)',
+        [name, characterClass, species, level],
         function (err) {
             if (err) {
                 console.error('Error inserting character:', err.message);
                 return res.status(500).json({ error: 'Failed to create character' });
             }
 
-            return res.status(201).json({ id: this.lastID, name, class: characterClass, level });
+            return res.status(201).json({ id: this.lastID, name, class: characterClass, species, level });
         }
     );
 });
@@ -49,6 +33,23 @@ router.get('/characters', (req, res) => {
 
         return res.json(rows);
     });
+});
+
+router.get('/characters/recent', (req, res) => {
+    const limit = req.query.limit || 5; // Default to 5 recent characters
+    
+    db.all(
+        'SELECT * FROM characters ORDER BY created_at DESC LIMIT ?',
+        [limit],
+        (err, rows) => {
+            if (err) {
+                console.error('Error fetching recent characters:', err.message);
+                return res.status(500).json({ error: 'Failed to fetch recent characters' });
+            }
+
+            return res.json(rows);
+        }
+    );
 });
 
 module.exports = router;

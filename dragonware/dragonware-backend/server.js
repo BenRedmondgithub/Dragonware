@@ -1,16 +1,16 @@
 const express = require('express');
 const cors = require('cors');
-const characterRoutes = require('./routes/character');
+const db = require('./database');
+const characterRoutes = require('./character');
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.json());
 
-const PORT = 3000;
-
 app.get('/', (req, res) => {
-  res.send('Welcome to the Dragonware API!');
+    res.send('Welcome to the Dragonware API!');
 });
 
 app.get("/api/roll-dice", (req, res) => {
@@ -39,7 +39,5 @@ app.get("/api/roll-dice", (req, res) => {
 app.use('/api', characterRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Server is running on port ${PORT}`);
 });
-
-

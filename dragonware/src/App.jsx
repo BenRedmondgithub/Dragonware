@@ -11,6 +11,7 @@ import CharacterEditPage from "./features/character/CharacterEditPage";
 import CharacterListPage from "./features/character/characterListPage";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Characters from "./components/characters";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path="/character/:id" element={<CharacterEditPage />} />
       <Route path="/map-builder-create" element={<MapBuilderCreate />} />
       <Route path="/character" element={<CharacterPage />} />
+      <Route path="/characters" element={<Characters />} />
     </Routes>
     <Footer />
     </>
