@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { deleteCharacter, loadCharacter } from "../../lib/characterStore";
 import { useEffect, useState } from "react";
 import Characters from "../../components/characters";
-import db from "../../../dragonware-backend/database";
 
 export default function CharacterListPage() {
   const [characters, setCharacters] = useState([]);
@@ -19,24 +18,6 @@ export default function CharacterListPage() {
     deleteCharacter(id);
     refresh();
   }
-
-  db.run(
-    `CREATE TABLE IF NOT EXISTS characters (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        name TEXT NOT NULL,
-        classType TEXT NOT NULL,
-        species TEXT NOT NULL,
-        level INTEGER NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-    )`,
-    (err) => {
-        if (err) {
-            console.error('Error ensuring characters table exists:', err.message);
-        }   else {
-            console.log('Characters table is ready.');
-        }
-    }
-);
 
   return (
     <div className="min-h-screen bg-zinc-950 text-zinc-100 p-8">
