@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const db = require('./database');
+require('./database'); // Initialize database connection and tables
 const characterRoutes = require('./character');
+const diceRoutes = require('./dice');
+const mapBuilderRoutes = require('./mapBuilder');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -37,6 +39,8 @@ app.get("/api/roll-dice", (req, res) => {
 });
 
 app.use('/api', characterRoutes);
+app.use('/api', diceRoutes);
+app.use('/api', mapBuilderRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
