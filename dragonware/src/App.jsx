@@ -15,8 +15,9 @@ import Characters from "./components/characters";
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
     <NavBar />
+    <main className="flex-1 w-full max-w-7xl mx-auto px-6 py-4 flex items-center justify-center">
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/dice" element={<DicePage />} />
@@ -30,8 +31,9 @@ function App() {
       <Route path="/character" element={<CharacterPage />} />
       <Route path="/characters" element={<Characters />} />
     </Routes>
+    </main>
     <Footer />
-    </>
+    </div>
   );
 }
 
