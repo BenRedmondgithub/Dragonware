@@ -1,5 +1,6 @@
+// import footer
 import { Links} from "react-router-dom";
-
+// Create footer component
 export default function Footer() {
     return (
         <footer className="w-full bg-zinc-900 p-4 mt-8">

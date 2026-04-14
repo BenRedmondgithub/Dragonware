@@ -1,5 +1,5 @@
 const sqlite3 = require("sqlite3").verbose();
-
+// open the database connection
 const db = new sqlite3.Database("dragonware.db", (err) => {
     if (err) {
         console.error("Error opening database:", err.message);
@@ -7,7 +7,7 @@ const db = new sqlite3.Database("dragonware.db", (err) => {
         console.log("Connected to the SQLite database.");
     }
 });
-
+// create character table add error handling
 db.run (
     `CREATE TABLE IF NOT EXISTS characters (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,7 +25,7 @@ db.run (
         }
     }
 );
-
+// create dice table add error handling
 db.run (
     `CREATE TABLE IF NOT EXISTS dice (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,7 +41,7 @@ db.run (
         }
     }
 );
-
+// create maps table add error handling
 db.run (
     `CREATE TABLE IF NOT EXISTS maps (
         id INTEGER PRIMARY KEY AUTOINCREMENT,

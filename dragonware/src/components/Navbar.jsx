@@ -1,5 +1,6 @@
+// import navbar component
 import { Link } from "react-router-dom";
-
+//create navbar 
 export default function NavBar() {
     return (
         <nav className="w-full bg-zinc-900 shadow-md">
