@@ -1,15 +1,15 @@
 const express = require('express');
 const db = require('./database');
-
+// Character routes
 const router = express.Router();
-
+// Endpoint to create a new character, expects name, class, species, and level in the request body
 router.post('/characters', (req, res) => {
     const { name, class: characterClass, species, level } = req.body;
 
     if (!name || !characterClass || !species || !level) {
         return res.status(400).json({ error: 'Name, class, species, and level are required' });
     }
-
+// Insert the new character into the database and return the created character with its ID
     db.run(
         'INSERT INTO characters (name, class, species, level) VALUES (?, ?, ?, ?)',
         [name, characterClass, species, level],
@@ -23,7 +23,7 @@ router.post('/characters', (req, res) => {
         }
     );
 });
-
+// Endpoint to get all characters from the database
 router.get('/characters', (req, res) => {
     db.all('SELECT * FROM characters', [], (err, rows) => {
         if (err) {
@@ -34,7 +34,7 @@ router.get('/characters', (req, res) => {
         return res.json(rows);
     });
 });
-
+// Endpoint to get a specific character by ID
 router.get('/characters/recent', (req, res) => {
     const limit = req.query.limit || 5; // Default to 5 recent characters
     
@@ -51,5 +51,5 @@ router.get('/characters/recent', (req, res) => {
         }
     );
 });
-
+// Endpoint to update a character by ID, expects name, class, species, and level in the request body
 module.exports = router;
