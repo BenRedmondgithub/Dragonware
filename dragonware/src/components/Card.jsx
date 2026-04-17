@@ -23,7 +23,7 @@ function Card({ title, description, to }) {
       style={{ backgroundImage: `url(${tarotCardImage})` }}
     >
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/60" />
+      <div className="absolute inset-0 bg-black/60 hover:bg-black/40 transition-all" />
 
       {/* Content */}
       <span className="relative z-10 text-zinc-200 text-xl font-semibold">
