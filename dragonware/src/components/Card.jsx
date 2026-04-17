@@ -19,6 +19,7 @@ function Card({ title, description, to }) {
         cursor-pointer
         hover:scale-105
         transition-all
+        hover:shadow-2xl
       "
       style={{ backgroundImage: `url(${tarotCardImage})` }}
     >
