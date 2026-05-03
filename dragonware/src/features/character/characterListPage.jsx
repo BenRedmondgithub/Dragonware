@@ -31,7 +31,7 @@ export default function CharacterListPage() {
           + New Character
         </Link>
       </div>
-
+ 
       <div className="mt-8 space-y-3">
         {characters.length === 0 ? (
           <p className="text-zinc-400">No characters saved yet.</p>
